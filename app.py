@@ -1,11 +1,9 @@
-import uuid
-from flask import Flask, request, send_file, render_template
 import os
-from werkzeug.utils import secure_filename
-from peewee import *
+import uuid
 
-# UID = uuid.uuid1()
-# print(UID)
+from flask import Flask, request, send_file
+from peewee import *
+from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './images'
 ALLOWED_EXTENSIONS = set(['png'])
@@ -26,7 +24,7 @@ class Image(Model):
 @app.route('/images/<image_id>')
 def get_image(image_id):
     data = Image.get(Image.id == image_id)
-    file_path = f"images/{data.name}.png"
+    file_path = f"images/{data.name}"
     return send_file(file_path, mimetype='image/png')
 
 
