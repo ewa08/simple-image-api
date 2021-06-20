@@ -6,7 +6,7 @@ from peewee import *
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './images'
-ALLOWED_EXTENSIONS = set(['png'])
+ALLOWED_EXTENSIONS = {'png'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
