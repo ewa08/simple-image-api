@@ -1,0 +1,15 @@
+body {
+    margin: 0 10%;
+    padding-top: 100px;
+}
+
+.list-item {
+    background: red;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.image {
+    width: 64px;
+    height: 64px;
+}

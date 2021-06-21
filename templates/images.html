@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Samples</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+
+    </script>
+    <link href="/static/styles.css" rel="stylesheet">
+</head>
+<body>
+<form action="/images" method="POST"
+      enctype="multipart/form-data">
+    <input type="file" name="image"/>
+    <input class="waves-effect waves-light btn-large" type="submit"/>
+</form>
+<div>
+    <h2>Images</h2>
+    <ul>
+        {% for image in image_list %}
+        <a href="images/{{image.id}}">
+            <li class="list-item">
+                <img class="image" src="/images/{{image.id}}">
+                {{image.id, image.name}}
+            </li>
+        </a>
+
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

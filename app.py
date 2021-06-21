@@ -1,7 +1,7 @@
 import os
 import uuid
 
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, render_template
 from peewee import *
 from werkzeug.utils import secure_filename
 
@@ -30,9 +30,12 @@ def get_image(image_id):
 
 @app.route('/images', methods=['GET', 'POST'])
 def upload_image():
-    uid = uuid.uuid1()
+    if request.method == 'GET':
+        images = Image.select()
+        return render_template('images.html', image_list=images)
     if request.method == 'POST':
         if 'image' in request.files:
+            uid = uuid.uuid1()
             image = request.files['image']
             filename = secure_filename(f'{str(uid)}.png')
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
