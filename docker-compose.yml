@@ -18,3 +18,10 @@ services:
       PGADMIN_DEFAULT_PASSWORD: password
     ports:
       - 15432:80
+
+  app:
+    image: flask-docker-image-api
+    ports:
+      - 5000:5000
+    depends_on:
+      - 'db'

@@ -11,7 +11,10 @@ ALLOWED_EXTENSIONS = {'png'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-psql_db = PostgresqlDatabase('images-db', user='postgres', password='password', host='localhost', port=5432)
+# HOST = 'localhost' # local
+HOST = 'db'  # docker
+
+psql_db = PostgresqlDatabase('images-db', user='postgres', password='example', host=HOST, port=5432)
 
 
 class Image(Model):
