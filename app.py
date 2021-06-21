@@ -31,7 +31,8 @@ def get_image(image_id):
 @app.route('/images', methods=['GET', 'POST'])
 def upload_image():
     if request.method == 'GET':
-        return render_template('images.html')
+        images = Image.select()
+        return render_template('images.html', image_list=images)
     if request.method == 'POST':
         if 'image' in request.files:
             uid = uuid.uuid1()
